@@ -71,7 +71,7 @@ CREATE TABLE MovieActor (
      ) ENGINE = INNODB;
 
 /*Referential integrity constraint #5: The MovieRatings mid references the corresponding movie id*/	 
-CREATE TABLE MovieRatings (
+CREATE TABLE MovieRating (
          mid int NOT NULL,
 		 imdb int,
 		 rot int,
