@@ -75,7 +75,8 @@ CREATE TABLE MovieRating (
          mid int NOT NULL,
 		 imdb int,
 		 rot int,
-		 PRIMARY KEY (mid)
+		 PRIMARY KEY (mid),
+		 FOREIGN KEY (mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 	 
 /*Referential integrity constraint #6: The Review mid references the corresponding movie id*/
@@ -85,7 +86,8 @@ CREATE TABLE Review (
 		 mid int NOT NULL,
 		 rating int NOT NULL,
 		 comment varchar(500),
-		 PRIMARY KEY(mid)
+		 PRIMARY KEY(mid),
+		 FOREIGN KEY(mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 	 
 CREATE TABLE MaxPersonID (
