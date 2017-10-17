@@ -12,8 +12,8 @@ CREATE TABLE Movie (
 Check constraint #1: Check that actor's DOB is before DOD, if not marked as dead*/ 
 CREATE TABLE Actor (
          id int NOT NULL,
-		 last varchar(100) NOT NULL,
-		 first varchar(100) NOT NULL,
+		 last varchar(20) NOT NULL,
+		 first varchar(20) NOT NULL,
 		 sex varchar(6) NOT NULL,
 		 dob date NOT NULL,
 		 dod date,
@@ -27,7 +27,6 @@ CREATE TABLE Sales (
          mid int NOT NULL,
 		 ticketsSold int NOT NULL,
 		 totalIncome int,
-		 PRIMARY KEY (mid),
 		 FOREIGN KEY (mid) REFERENCES Movie(id),
 		 CHECK(ticketsSold >= 0)
      ) ENGINE=INNODB;
@@ -36,9 +35,8 @@ CREATE TABLE Sales (
 Check constraint #3: Check that actor's DOB is before DOD, if not marked as dead*/ 
 CREATE TABLE Director (
          id int NOT NULL,
-		 last varchar(100) NOT NULL,
-		 first varchar(100) NOT NULL,
-		 sex varchar(6) NOT NULL,
+		 last varchar(20) NOT NULL,
+		 first varchar(20) NOT NULL,
 		 dob date NOT NULL,
 		 dod date,
 		 PRIMARY KEY (id),
@@ -49,7 +47,6 @@ CREATE TABLE Director (
 CREATE TABLE MovieGenre (
          mid int NOT NULL,
 		 genre varchar(20),
-		 PRIMARY KEY (mid),
 		 FOREIGN KEY (mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 
@@ -57,7 +54,6 @@ CREATE TABLE MovieGenre (
 CREATE TABLE MovieDirector (
          mid int NOT NULL,
 		 did int NOT NULL,
-		 PRIMARY KEY (mid),
 		 FOREIGN KEY (mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 
@@ -66,7 +62,6 @@ CREATE TABLE MovieActor (
          mid int NOT NULL,
 		 aid int NOT NULL,
 		 role varchar(50),
-		 PRIMARY KEY (mid),
 		 FOREIGN KEY (mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 
@@ -75,7 +70,6 @@ CREATE TABLE MovieRating (
          mid int NOT NULL,
 		 imdb int,
 		 rot int,
-		 PRIMARY KEY (mid),
 		 FOREIGN KEY (mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 	 
@@ -86,16 +80,13 @@ CREATE TABLE Review (
 		 mid int NOT NULL,
 		 rating int NOT NULL,
 		 comment varchar(500),
-		 PRIMARY KEY(mid),
 		 FOREIGN KEY(mid) REFERENCES Movie(id)
      ) ENGINE = INNODB;
 	 
 CREATE TABLE MaxPersonID (
-		id int NOT NULL,
-		PRIMARY KEY (id)
+		id int NOT NULL
 	 );
 
 CREATE TABLE MaxMovieID (
-		id int NOT NULL,
-		PRIMARY KEY (id)
+		id int NOT NULL
 	 );

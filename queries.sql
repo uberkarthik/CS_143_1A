@@ -11,10 +11,13 @@ FROM (SELECT did, COUNT(mid) as movs
 FROM MovieDirector GROUP BY MovieDirector.did) as alldirs
 WHERE alldirs.movs > 3;
 
-/* display the name of all the movies in a table */
+/* display the name of all the movies made after the year 200 in a table */
 SELECT Movie.title
-FROM Movie;
+FROM Movie
+WHERE Movie.year > 2000;
 
-/* display the full names of all the directors in a table */
-SELECT CONCAT (first, ' ', last)
-FROM Director;
+/* display movies that have more then 100,000 ticket sales in a table */
+SELECT Movie.title
+FROM Sales, Movie
+WHERE ticketsSold > 100000
+AND Sales.mid = Movie.id;
