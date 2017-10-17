@@ -11,7 +11,7 @@ FROM (SELECT did, COUNT(mid) as movs
 FROM MovieDirector GROUP BY MovieDirector.did) as alldirs
 WHERE alldirs.movs > 3;
 
-/* display the name of all the movies made after the year 200 in a table */
+/* display the name of all the movies made after the year 2000 in a table */
 SELECT Movie.title
 FROM Movie
 WHERE Movie.year > 2000;
